@@ -62,6 +62,6 @@
 
 ### 相关链接
 
-源代码：https://github.com/dawnchan030920/Firgency
+[源代码](https://github.com/dawnchan030920/Firgency)
 
-安装包：https://github.com/dawnchan030920/Firgency/releases/tag/1.0.0.4
+[安装包](https://github.com/dawnchan030920/Firgency/releases/tag/1.0.0.4)
