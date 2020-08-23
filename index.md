@@ -1,37 +1,61 @@
-## Welcome to GitHub Pages
+## 十万火急（Firgency）官方网站
 
-You can use the [editor on GitHub](https://github.com/dawnchan030920/Firgency/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+十万火急（Firgency）是镇海中学“无·烬”中学生领导力项目组出品的一款游戏，用于以游戏的形式，更好地向全社会普及消防知识，达到寓教于乐的目的。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+这款游戏，通过对现实世界的建模，建立了一套符合科学、现实的游戏设定，并在此基础上进行了趣味化加工，更好地结合了娱乐性和知识性。
 
-### Markdown
+### 游戏规则
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### 一、阵营
 
-```markdown
-Syntax highlighted code block
+该游戏有消防和火灾两个阵营。
 
-# Header 1
-## Header 2
-### Header 3
+#### 二、角色
 
-- Bulleted
-- List
+该游戏有四个角色。
 
-1. Numbered
-2. List
+1. 🗡 近程攻击（在消防阵营被称为**救援人员**，在火灾阵营被称为**剑客**）。攻击距离为1，血量为1，连续攻击次数为1。攻击并消灭敌方后可以占领地方位置。
+2. 🏹 远程攻击（在消防阵营被称为**远程支援**，在火灾阵营被称为**弓箭手**）。攻击距离为3，血量为1，连续攻击次数为1。
+3. 🔫 群体攻击（在消防阵营被称为**水炮**，在火灾阵营被称为**龙**）。攻击距离为2，血量为1，连续攻击次数为2。
+4. 🛡️ 防御（在消防阵营被称为**防火罩**，在火灾阵营被称为**盾**）。无法攻击，血量为2。
 
-**Bold** and _Italic_ and `Code` text
+角色全局可见。
 
-[Link](url) and ![Image](src)
-```
+#### 三、特性
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+该游戏消防阵营有3种特性。
 
-### Jekyll Themes
+1. 水。
+2. 二氧化碳灭火器。
+3. 干粉灭火器。
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dawnchan030920/Firgency/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+该游戏火灾阵营有4种特性。
 
-### Support or Contact
+1. 火。
+2. 电。被触发后，前后左右四个格子中消防阵营棋子血量-1。
+3. 金属。被触发后，该棋子血量不减少，且下一局行动力+1。
+4. 油。被触发后，该棋子血量不减少，且前后左右移动1格。
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+消防特性对火灾特性会产生不同的效果。
+
+水会触发电、金属、油特征。
+
+二氧化碳灭火器会触发金属特征。
+
+特性只有自己可见。
+
+#### 四、行动力
+
+消防阵营默认行动力为4，火灾阵营默认行动力为3。
+
+攻击花费1行动力，移动花费行动力就是移动的格子数。
+
+抽取角色花费1行动力，抽取特性花费2行动力。
+
+行动力不可以累加，但是可以舍弃。
+
+#### 五、胜利条件
+
+消防阵营需要消灭所有活在阵营棋子。
+
+火灾阵营需要使5枚棋子进入消防阵营的最后一排。进入后棋子会被销毁。
