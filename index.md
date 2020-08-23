@@ -59,3 +59,9 @@
 消防阵营需要消灭所有活在阵营棋子。
 
 火灾阵营需要使5枚棋子进入消防阵营的最后一排。进入后棋子会被销毁。
+
+### 相关链接
+
+源代码：https://github.com/dawnchan030920/Firgency
+
+安装包：https://github.com/dawnchan030920/Firgency/releases/tag/1.0.0.4
