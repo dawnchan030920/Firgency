@@ -39,13 +39,23 @@ namespace Firgency
 
             if (result == 0) // 上
             {
+                // 如果上方没有越界
                 if (row - 1 >= 0)
                 {
                     // 如果上方位置有消防阵营的棋子
                     if ((MainWindow.Characters.Find(r => r.Column.Equals(column)
-                        && r.Row.Equals(row - 1)) != null) && MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row - 1)).Campaign == Campaign.Water)
+                        && r.Row.Equals(row - 1)) != null)
+                        && MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row - 1)).Campaign == Campaign.Water)
                     {
+                        // 攻击
                         MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row - 1)).Blood -= 1;
+
+                        // 如果攻击死亡
+                        if (MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row - 1)) == null)
+                        {
+                            MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row)).Row -= 1; // 占领
+                        }
                     }
                     // 如果没有
                     else if (MainWindow.Characters.Find(r => r.Column.Equals(column)
@@ -54,7 +64,7 @@ namespace Firgency
             }
             else if (result == 1) // 下
             {
-                if (row + 1 >= 0)
+                if (row + 1 <= 3)
                 {
                     // 如果上方位置有消防阵营的棋子
                     if ((MainWindow.Characters.Find(r => r.Column.Equals(column)
@@ -62,7 +72,14 @@ namespace Firgency
                         && MainWindow.Characters.Find(r => r.Column.Equals(column)
                         && r.Row.Equals(row + 1)).Campaign == Campaign.Water)
                     {
+                        // 攻击
                         MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row + 1)).Blood -= 1;
+
+                        // 如果攻击死亡
+                        if (MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row + 1)) == null)
+                        {
+                            MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row)).Row += 1; // 占领
+                        }
                     }
                     // 如果没有
                     else if (MainWindow.Characters.Find(r => r.Column.Equals(column)
@@ -79,7 +96,14 @@ namespace Firgency
                         && MainWindow.Characters.Find(r => r.Column.Equals(column - 1)
                         && r.Row.Equals(row)).Campaign == Campaign.Water)
                     {
+                        // 攻击
                         MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)).Blood -= 1;
+
+                        // 如果攻击死亡
+                        if (MainWindow.Characters.Find(r => r.Column.Equals(column - 1) && r.Row.Equals(row)) == null)
+                        {
+                            MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row)).Column -= 1; // 占领
+                        }
                     }
                     // 如果没有
                     else if (MainWindow.Characters.Find(r => r.Column.Equals(column - 1)
@@ -96,7 +120,14 @@ namespace Firgency
                         && MainWindow.Characters.Find(r => r.Column.Equals(column + 1)
                         && r.Row.Equals(row)).Campaign == Campaign.Water)
                     {
+                        // 攻击
                         MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)).Blood -= 1;
+
+                        // 如果攻击死亡
+                        if (MainWindow.Characters.Find(r => r.Column.Equals(column + 1) && r.Row.Equals(row)) == null)
+                        {
+                            MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row)).Column += 1; // 占领
+                        }
                     }
                     // 如果没有
                     else if (MainWindow.Characters.Find(r => r.Column.Equals(column + 1)
@@ -146,7 +177,6 @@ namespace Firgency
     {
         protected override void OnTrigger(int row, int column)
         {
-            MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Blood += 1;
             MainWindow.ActionCompensation = true;
         }
         public Metal() { Name = "金属"; }

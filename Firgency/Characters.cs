@@ -105,8 +105,18 @@ namespace Firgency
         {
             if (AttackRangeCheck(character) && PersonalityNoneCheck() && ActionNumberEnough() && AttackNumberEnough())
             {
-                if ((Personality is Water && (character.Personality is Oil || character.Personality is Electricity || character.Personality is Metal)) || (Personality is CO2 && character.Personality is Metal)) character.Personality.Trigger(character.Row, character.Column);
-                AttackOperation(character);
+                if (Personality is Water && (character.Personality is Electricity || character.Personality is Oil || character.Personality is Metal))
+                {
+                    character.Personality.Trigger(character.Row, character.Column);
+                }
+                else if (Personality is CO2 && character.Personality is Metal)
+                {
+                    character.Personality.Trigger(character.Row, character.Column);
+                }
+                else
+                {
+                    AttackOperation(character);
+                }
                 MainWindow.UpdateMap();
                 MainWindow.ActionNumber -= 1;
                 AttackNumber -= 1;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Firgency"
         mc:Ignorable="d"
-        Title="Firgency" Height="235" Width="588.303" Loaded="Window_Loaded">
+        Title="Firgency" Height="241" Width="594.303" Loaded="Window_Loaded">
     <Grid Margin="0,0,415,0">
         <Button x:Name="GetCharacter" Content="获取角色" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0" Click="GetCharacter_Click"/>
         <Button x:Name="GetPersonality" Content="获取特性" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="75" Click="GetPersonality_Click"/>
