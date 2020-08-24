@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Firgency"
         mc:Ignorable="d"
-        Title="Firgency" Height="241" Width="594.303" Loaded="Window_Loaded">
+        Title="Firgency" Height="246" Width="599.303" Loaded="Window_Loaded">
     <Grid Margin="0,0,415,0">
         <Button x:Name="GetCharacter" Content="获取角色" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,10,0,0" Click="GetCharacter_Click"/>
         <Button x:Name="GetPersonality" Content="获取特性" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="75" Click="GetPersonality_Click"/>
         <TextBlock x:Name="CharacterGet" HorizontalAlignment="Left" Margin="90,10,0,0" TextWrapping="Wrap" Text="获取角色" VerticalAlignment="Top" Height="19" MouseLeftButtonDown="CharacterGet_MouseLeftButtonDown"/>
         <TextBlock x:Name="PersonalityGet" HorizontalAlignment="Left" Margin="90,34,0,0" TextWrapping="Wrap" Text="获取特性" VerticalAlignment="Top" Height="19" MouseLeftButtonDown="PersonalityGet_MouseLeftButtonDown"/>
-        <TextBlock x:Name="Campaign" HorizontalAlignment="Left" Margin="10,136,0,0" TextWrapping="Wrap" Text="阵营名" VerticalAlignment="Top"/>
+        <TextBlock x:Name="Campaign" HorizontalAlignment="Left" Margin="10,147,0,0" TextWrapping="Wrap" Text="阵营名" VerticalAlignment="Top"/>
 
-        <TextBlock x:Name="fl" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.FireLeft)}" VerticalAlignment="Top" Background="#FFFBC9C9"/>
+        <TextBlock x:Name="fl" HorizontalAlignment="Left" Margin="10,187,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.FireLeft)}" VerticalAlignment="Top" Background="#FFFBC9C9"/>
 
-        <TextBlock x:Name="wl" HorizontalAlignment="Left" Margin="63,176,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.WaterLeft)}" VerticalAlignment="Top" Background="#FFA0B7F5"/>
+        <TextBlock x:Name="wl" HorizontalAlignment="Left" Margin="63,187,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.WaterLeft)}" VerticalAlignment="Top" Background="#FFA0B7F5"/>
 
-        <TextBlock x:Name="an" HorizontalAlignment="Left" Margin="10,156,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.ActionNumber)}"  VerticalAlignment="Top" Background="#FFFCFFC1"/>
+        <TextBlock x:Name="an" HorizontalAlignment="Left" Margin="10,167,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:MainWindow.ActionNumber)}"  VerticalAlignment="Top" Background="#FFFCFFC1"/>
 
         <Button x:Name="NextRound" Content="下一回合" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="75" Click="NextRound_Click"/>
         <Grid x:Name="Map" HorizontalAlignment="Left" Height="200" Margin="174,4,-409,0" VerticalAlignment="Top" Width="400">
