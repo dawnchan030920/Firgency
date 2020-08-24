@@ -34,32 +34,74 @@ namespace Firgency
     {
         protected override void OnTrigger(int row, int column)
         {
-            if (row - 1 >= 0
-                && MainWindow.Characters.Find(r => r.Row.Equals(row - 1) && r.Column.Equals(column)) == null)
-            {
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Row -= 1;
-                MainWindow.Characters.Find(r => r.Row.Equals(row - 1) && r.Column.Equals(column)).Blood += 1;
-            }
+            Random random = new Random();
+            int result = random.Next(0, 4);
 
-            else if (row + 1 <= 3
-                && MainWindow.Characters.Find(r => r.Row.Equals(row + 1) && r.Column.Equals(column)) == null)
+            if (result == 0) // 上
             {
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Row += 1;
-                MainWindow.Characters.Find(r => r.Row.Equals(row + 1) && r.Column.Equals(column)).Blood += 1;
+                if (row - 1 >= 0)
+                {
+                    // 如果上方位置有消防阵营的棋子
+                    if ((MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row - 1)) != null) && MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row - 1)).Campaign == Campaign.Water)
+                    {
+                        MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row - 1)).Blood -= 1;
+                    }
+                    // 如果没有
+                    else if (MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row - 1)) == null) MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Row -= 1;
+                }
             }
-
-            else if (column - 1 >= 0
-                && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)) == null)
+            else if (result == 1) // 下
             {
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Column -= 1;
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)).Blood += 1;
+                if (row + 1 >= 0)
+                {
+                    // 如果上方位置有消防阵营的棋子
+                    if ((MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row + 1)) != null)
+                        && MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row + 1)).Campaign == Campaign.Water)
+                    {
+                        MainWindow.Characters.Find(r => r.Column.Equals(column) && r.Row.Equals(row + 1)).Blood -= 1;
+                    }
+                    // 如果没有
+                    else if (MainWindow.Characters.Find(r => r.Column.Equals(column)
+                        && r.Row.Equals(row + 1)) == null) MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Row += 1;
+                }
             }
-
-            else if (column + 1 <= 7
-                && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)) == null)
+            else if (result == 2) // 左
             {
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Column += 1;
-                MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)).Blood += 1;
+                if (column - 1 >= 0)
+                {
+                    // 如果左方位置有消防阵营的棋子
+                    if ((MainWindow.Characters.Find(r => r.Column.Equals(column - 1)
+                        && r.Row.Equals(row)) != null)
+                        && MainWindow.Characters.Find(r => r.Column.Equals(column - 1)
+                        && r.Row.Equals(row)).Campaign == Campaign.Water)
+                    {
+                        MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)).Blood -= 1;
+                    }
+                    // 如果没有
+                    else if (MainWindow.Characters.Find(r => r.Column.Equals(column - 1)
+                        && r.Row.Equals(row)) == null) MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Column -= 1;
+                }
+            }
+            else if (result == 3) // 右
+            {
+                if (column + 1 <= 7)
+                {
+                    // 如果右方位置有消防阵营的棋子
+                    if ((MainWindow.Characters.Find(r => r.Column.Equals(column + 1)
+                        && r.Row.Equals(row)) != null)
+                        && MainWindow.Characters.Find(r => r.Column.Equals(column + 1)
+                        && r.Row.Equals(row)).Campaign == Campaign.Water)
+                    {
+                        MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)).Blood -= 1;
+                    }
+                    // 如果没有
+                    else if (MainWindow.Characters.Find(r => r.Column.Equals(column + 1)
+                        && r.Row.Equals(row)) == null) MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column)).Column += 1;
+                }
             }
         }
         public Oil() { Name = "油"; }
