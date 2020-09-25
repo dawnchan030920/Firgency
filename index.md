@@ -58,4 +58,4 @@
 
 [源代码网站](https://github.com/dawnchan030920/Firgency)
 
-[安装包网站](https://github.com/dawnchan030920/Firgency/releases/tag/1.0.0.4)
+[安装包网站](https://github.com/dawnchan030920/Firgency/releases/tag/1.1.0.0)
