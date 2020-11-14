@@ -211,7 +211,7 @@ namespace Firgency
             current = CurrentType.None;
         }
 
-        private void Grid_Click(object sender, RoutedEventArgs e) // TODO: 选中地图中的一格
+        private void Grid_Click(object sender, RoutedEventArgs e) // 选中地图中的一格
         {
             // 获取sender的行和列
             TextBlock block = sender as TextBlock;
@@ -248,22 +248,8 @@ namespace Firgency
                 // 原来选中角色
                 else if (current == CurrentType.Character)
                 {
-                    // 是否斜着走
-                    if (character.Column - column != 0 && character.Row - row != 0) MessageBox.Show("不能斜着走！");
-                    else
-                    {
-                        // 行动力是否足够
-                        if (ActionNumber >= Math.Abs(character.Column - column) + Math.Abs(character.Row - row))
-                        {
-                            ActionNumber -= Math.Abs(character.Column - column) + Math.Abs(character.Row - row);
-
-                            character.Row = row;
-                            character.Column = column;
-
-                            UpdateMap();
-                        }
-                        else MessageBox.Show("行动力不足！");
-                    }
+                    character.Move(column, row);
+                    UpdateMap();
                 }
                 // 原来什么都没选中
             }

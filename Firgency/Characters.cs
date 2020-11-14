@@ -122,6 +122,16 @@ namespace Firgency
                 AttackNumber -= 1;
             }
         }
+
+        public void Move(int targetColumn, int targetRow)
+        {
+            // 找到当前位置到目标位置的最短路径，判断是否够，可以的话移动并扣除行动力，否则弹出行动力不足的弹窗。
+            // 不可以走的格子：所有有人的格子
+            // 除此之外都是可以走的
+            // 范围：c [0, 7]
+            // r [0, 3]
+            // 思路：BFS
+        }
     }
 
     public class Short : Character
