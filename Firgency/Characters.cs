@@ -125,12 +125,68 @@ namespace Firgency
 
         public void Move(int targetColumn, int targetRow)
         {
-            // 找到当前位置到目标位置的最短路径，判断是否够，可以的话移动并扣除行动力，否则弹出行动力不足的弹窗。
+            // 找到当前位置到目标位置的最短路径，判断是否够，可以的话移动并扣除行动力，否则弹出行动力不足 或 无法移动的弹窗。
             // 不可以走的格子：所有有人的格子
             // 除此之外都是可以走的
             // 范围：c [0, 7]
             // r [0, 3]
+            // 目标位置和现在位置肯定不相同
             // 思路：BFS
+            int distance = -1;
+
+            Queue<PointForBFS> points = new Queue<PointForBFS>();
+            points.Enqueue(new PointForBFS(new Point(Column, Row), 0));
+            bool[,] visited = new bool[8, 4];
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    visited[i, j] = false;
+                }
+            }
+            visited[Column, Row] = true;
+
+            while (points.Count != 0)
+            {
+                PointForBFS point = points.Peek();
+                if (point.Point.Row == targetRow && point.Point.Column == targetColumn)
+                {
+                    distance = point.Depth;
+                    break;
+                }
+                if (point.Point.Row - 1 >= 0 && MainWindow.Characters.Find(r => r.Row == point.Point.Row - 1 && point.Point.Column == r.Column) == null && !visited[point.Point.Column, point.Point.Row - 1])
+                {
+                    points.Enqueue(new PointForBFS(new Point(point.Point.Column, point.Point.Row - 1), point.Depth + 1));
+                    visited[point.Point.Column, point.Point.Row - 1] = true;
+                }
+                if (point.Point.Row + 1 <= 3 && MainWindow.Characters.Find(r => r.Row == point.Point.Row + 1 && point.Point.Column == r.Column) == null && !visited[point.Point.Column, point.Point.Row + 1])
+                {
+                    points.Enqueue(new PointForBFS(new Point(point.Point.Column, point.Point.Row + 1), point.Depth + 1));
+                    visited[point.Point.Column, point.Point.Row + 1] = true;
+                }
+                if (point.Point.Column - 1 >= 0 && MainWindow.Characters.Find(r => r.Row == point.Point.Row && point.Point.Column - 1 == r.Column) == null && !visited[point.Point.Column - 1, point.Point.Row])
+                {
+                    points.Enqueue(new PointForBFS(new Point(point.Point.Column - 1, point.Point.Row), point.Depth + 1));
+                    visited[point.Point.Column - 1, point.Point.Row] = true;
+                }
+                if (point.Point.Column + 1 <= 7 && MainWindow.Characters.Find(r => r.Row == point.Point.Row && point.Point.Column + 1 == r.Column) == null && !visited[point.Point.Column + 1, point.Point.Row])
+                {
+                    points.Enqueue(new PointForBFS(new Point(point.Point.Column + 1, point.Point.Row), point.Depth + 1));
+                    visited[point.Point.Column + 1, point.Point.Row] = true;
+                }
+                points.Dequeue();
+            }
+            if (distance == -1) MessageBox.Show("该角色无法移动！");
+            else
+            {
+                if (distance <= MainWindow.ActionNumber)
+                {
+                    MainWindow.ActionNumber -= distance;
+                    Column = targetColumn;
+                    Row = targetRow;
+                }
+                else MessageBox.Show("行动力不足！");
+            }
         }
     }
 
