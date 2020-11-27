@@ -25,13 +25,14 @@ namespace Firgency
             set
             {
                 _column = value;
-                if (Column == 0 && Campaign == Campaign.Fire) { MainWindow.WaterLeft -= 1; MainWindow.Characters.Remove(this); }
+                if (Column == 0 && Campaign == Campaign.Fire) { MainWindow.WaterLeft -= 1; MainWindow.Characters.Remove(this); if (Campaign == Campaign.Fire) MainWindow.FireLeft -= 1; }
             }
         }
         public Personality Personality { get; set; }
         public int Blood
         {
             get => _blood;
+
             set
             {
                 _blood = value;
