@@ -85,7 +85,11 @@ namespace Firgency
             {
                 _fireLeft = value;
                 FireLeftChanged?.Invoke(null, EventArgs.Empty);
-                if (FireLeft <= 0) MessageBox.Show("消防阵营胜利！");
+                if (FireLeft <= 0)
+                {
+                    MessageBox.Show("消防阵营胜利！", "游戏结束");
+                    Application.Current.Shutdown();
+                }
             }
         }
 
@@ -97,7 +101,11 @@ namespace Firgency
             {
                 _waterLeft = value;
                 WaterLeftChanged?.Invoke(null, EventArgs.Empty);
-                if (WaterLeft <= 0) MessageBox.Show("火灾阵营胜利！");
+                if (WaterLeft <= 0)
+                {
+                    MessageBox.Show("火灾阵营胜利！", "游戏结束");
+                    Application.Current.Shutdown();
+                }
             }
         }
 
