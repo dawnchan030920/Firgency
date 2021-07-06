@@ -149,21 +149,21 @@ namespace Firgency
                 MainWindow.Characters.Find(r => r.Row.Equals(row - 1) && r.Column.Equals(column)).Blood -= 1;
             }
 
-            else if (row + 1 <= 3
+            if (row + 1 <= 3
                 && MainWindow.Characters.Find(r => r.Row.Equals(row + 1) && r.Column.Equals(column)) != null
                 && MainWindow.Characters.Find(r => r.Row.Equals(row + 1) && r.Column.Equals(column)).Campaign == Campaign.Water)
             {
                 MainWindow.Characters.Find(r => r.Row.Equals(row + 1) && r.Column.Equals(column)).Blood -= 1;
             }
 
-            else if (column + 1 <= 7
+            if (column + 1 <= 7
                 && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)) != null
                 && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)).Campaign == Campaign.Water)
             {
                 MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column + 1)).Blood -= 1;
             }
 
-            else if (column - 1 >= 0
+            if (column - 1 >= 0
                 && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)) != null
                 && MainWindow.Characters.Find(r => r.Row.Equals(row) && r.Column.Equals(column - 1)).Campaign == Campaign.Water)
             {
